@@ -13,7 +13,6 @@ namespace Angular7CRUDAPI
         {
         }
         public DbSet<User> User { get; set; }
-        public DbSet<UserId> UserId { get; set; }
 
     }
 }

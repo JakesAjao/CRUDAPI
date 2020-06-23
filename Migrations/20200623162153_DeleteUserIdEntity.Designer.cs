@@ -3,14 +3,16 @@ using Angular7CRUDAPI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Angular7CRUDAPI.Migrations
 {
     [DbContext(typeof(Angular7CRUDContext))]
-    partial class Angular7CRUDContextModelSnapshot : ModelSnapshot
+    [Migration("20200623162153_DeleteUserIdEntity")]
+    partial class DeleteUserIdEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
