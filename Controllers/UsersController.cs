@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Angular7CRUDAPI;
+using Microsoft.AspNetCore.Cors;
 
 namespace Angular7CRUDAPI.Controllers
 {
     [Route("api/Angular7CRUDAPI")]
+    [EnableCors("AllowAllHeaders")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -22,6 +24,7 @@ namespace Angular7CRUDAPI.Controllers
 
         // GET: api/Users
         [HttpGet]
+        [EnableCors("AllowAllHeaders")]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.User.ToListAsync();
@@ -45,6 +48,7 @@ namespace Angular7CRUDAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+      
         public async Task<IActionResult> PutUser(int id, [FromBody]User user)
         {
             if (id != user.Id)
@@ -84,7 +88,6 @@ namespace Angular7CRUDAPI.Controllers
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
-
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
@@ -100,7 +103,6 @@ namespace Angular7CRUDAPI.Controllers
 
             return user;
         }
-
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.Id == id);

@@ -9,7 +9,6 @@ namespace Angular7CRUDAPI.Migrations
             migrationBuilder.DropTable(
                 name: "UserId");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
