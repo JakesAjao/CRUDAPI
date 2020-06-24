@@ -21,7 +21,23 @@ namespace Angular7CRUDAPI.Controllers
         {
             _context = context;
         }
-        //POST: api/Users
+        //GET: 
+        [HttpGet("validate/username={username}&password={password}")]
+        [EnableCors("AllowAllHeaders")]
+        public bool ValidateUser(string username,string password)
+        {
+            User myUser = _context.User.FirstOrDefault
+               (u => u.Username.Equals(username) && u.Password.Equals(password));
+            if (myUser != null)
+            {
+                return true;
+            }
+            else    //User was not found
+            {
+                return false;
+            }
+        }
+        //POST: 
         [HttpPost("validate")]
         [EnableCors("AllowAllHeaders")]
         public bool ValidateUser(User user)
