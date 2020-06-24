@@ -1,0 +1,75 @@
+[1mdiff --git a/.vs/Angular7CRUDAPI/v16/.suo b/.vs/Angular7CRUDAPI/v16/.suo[m
+[1mindex a1eccf0..00f8166 100644[m
+Binary files a/.vs/Angular7CRUDAPI/v16/.suo and b/.vs/Angular7CRUDAPI/v16/.suo differ
+[1mdiff --git a/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide b/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide[m
+[1mindex f361e58..3132268 100644[m
+Binary files a/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide and b/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide differ
+[1mdiff --git a/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide-wal b/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide-wal[m
+[1mindex 6b33605..76f1b1d 100644[m
+Binary files a/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide-wal and b/.vs/Angular7CRUDAPI/v16/Server/sqlite3/storage.ide-wal differ
+[1mdiff --git a/Controllers/User.cs b/Controllers/User.cs[m
+[1mindex 8898eff..9f20b25 100644[m
+[1m--- a/Controllers/User.cs[m
+[1m+++ b/Controllers/User.cs[m
+[36m@@ -13,12 +13,5 @@[m [mnamespace Angular7CRUDAPI.Controllers[m
+         public string LastName { get; set; }[m
+         public string FirstName { get; set; }[m
+     }[m
+[31m-    public class UserId[m
+[31m-    {[m
+[31m-        public int Id { get; set; }[m
+[31m-        public string Username { get; set; }[m
+[31m-        public string Password { get; set; }[m
+[31m-        public string LastName { get; set; }[m
+[31m-        public string FirstName { get; set; }[m
+[31m-    }[m
+[32m+[m[41m    [m
+ }[m
+[1mdiff --git a/Controllers/UsersController.cs b/Controllers/UsersController.cs[m
+[1mindex caf1149..ccd42ce 100644[m
+[1m--- a/Controllers/UsersController.cs[m
+[1m+++ b/Controllers/UsersController.cs[m
+[36m@@ -21,6 +21,22 @@[m [mnamespace Angular7CRUDAPI.Controllers[m
+         {[m
+             _context = context;[m
+         }[m
+[32m+[m[32m        //POST: api/Users[m
+[32m+[m[32m        [HttpPost("validate")][m
+[32m+[m[32m        [EnableCors("AllowAllHeaders")][m
+[32m+[m[32m        public bool ValidateUser(User user)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            User myUser = _context.User.FirstOrDefault[m
+[32m+[m[32m               (u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password));[m
+[32m+[m[32m            if (myUser != null)[m
+[32m+[m[32m            {[m
+[32m+[m[32m                return true;[m
+[32m+[m[32m            }[m
+[32m+[m[32m            else    //User was not found[m
+[32m+[m[32m            {[m
+[32m+[m[32m                return false;[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+ [m
+         // GET: api/Users[m
+         [HttpGet][m
+[36m@@ -47,8 +63,7 @@[m [mnamespace Angular7CRUDAPI.Controllers[m
+         // PUT: api/Users/5[m
+         // To protect from overposting attacks, enable the specific properties you want to bind to, for[m
+         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.[m
+[31m-        [HttpPut("{id}")][m
+[31m-      [m
+[32m+[m[32m        [HttpPut("{id}")][m[41m      [m
+         public async Task<IActionResult> PutUser(int id, [FromBody]User user)[m
+         {[m
+             if (id != user.Id)[m
+[1mdiff --git a/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.dll b/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.dll[m
+[1mindex 999f5d0..8419af9 100644[m
+Binary files a/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.dll and b/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.dll differ
+[1mdiff --git a/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.pdb b/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.pdb[m
+[1mindex 5b5b393..c6acebb 100644[m
+Binary files a/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.pdb and b/bin/Debug/netcoreapp3.1/Angular7CRUDAPI.pdb differ
+[1mdiff --git a/obj/Debug/netcoreapp3.1/Angular7CRUDAPI.csproj.FileListAbsolute.txt b/obj/Debug/netcoreapp3.1/Angular7CRUDAPI.csproj.FileListAbsolute.txt[m
+[1mindex d0427c8..1738a3c 100644[m
+[1m--- a/obj/Debug/netcoreapp3.1/Angular7CRUDAPI.csproj.FileListAbsolute.txt[m
+[1m+++ b/obj/Debug/netcoreapp3.1/Angular7CRUDAPI.csproj.FileListAbsolute.txt[m
+[36m@@ -149,3

@@ -149,3 +149,4 @@ C:\Projects\Angular7CRUDAPI\obj\Debug\netcoreapp3.1\Angular7CRUDAPI.RazorTargetA
 C:\Projects\Angular7CRUDAPI\obj\Debug\netcoreapp3.1\Angular7CRUDAPI.csproj.CopyComplete
 C:\Projects\Angular7CRUDAPI\obj\Debug\netcoreapp3.1\Angular7CRUDAPI.dll
 C:\Projects\Angular7CRUDAPI\obj\Debug\netcoreapp3.1\Angular7CRUDAPI.pdb
+C:\Projects\Angular7CRUDAPI\obj\Debug\netcoreapp3.1\Angular7CRUDAPI.csprojAssemblyReference.cache

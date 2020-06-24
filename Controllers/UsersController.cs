@@ -21,6 +21,22 @@ namespace Angular7CRUDAPI.Controllers
         {
             _context = context;
         }
+        //POST: api/Users
+        [HttpPost("validate")]
+        [EnableCors("AllowAllHeaders")]
+        public bool ValidateUser(User user)
+        {
+            User myUser = _context.User.FirstOrDefault
+               (u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password));
+            if (myUser != null)
+            {
+                return true;
+            }
+            else    //User was not found
+            {
+                return false;
+            }
+        }
 
         // GET: api/Users
         [HttpGet]
@@ -47,8 +63,7 @@ namespace Angular7CRUDAPI.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-      
+        [HttpPut("{id}")]      
         public async Task<IActionResult> PutUser(int id, [FromBody]User user)
         {
             if (id != user.Id)
