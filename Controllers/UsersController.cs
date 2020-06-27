@@ -38,19 +38,35 @@ namespace Angular7CRUDAPI.Controllers
             }
         }
         //POST: 
+        //[HttpPost("validate")]
+        //public async Task<ActionResult<User>> ValidateUser(User user)
+        //{
+        //    User myUser = _context.User.FirstOrDefault
+        //       (u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password));
+        //    if (myUser != null)
+        //    {
+        //        return myUser;
+        //    }
+        //    else    //User was not found
+        //    {
+        //        return NotFound();
+        //    }
+        //}
         [HttpPost("validate")]
-        [EnableCors("AllowAllHeaders")]
-        public bool ValidateUser(User user)
+        public User ValidateUser(User user)
         {
-            User myUser = _context.User.FirstOrDefault
-               (u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password));
-            if (myUser != null)
+            try
             {
-                return true;
+                User myUser = _context.User.FirstOrDefault
+                  (u => u.Username.Equals(user.Username) && u.Password.Equals(user.Password));
+                if (myUser.Status == "NonActive")
+                    return new User { Status = "NonActive", Message = "Invalid User." };
+                else
+                    return new User { Status = "Active", Message = "Successful." };
             }
-            else    //User was not found
+            catch(Exception e)
             {
-                return false;
+                return new User { Status = "NULL", Message = "User does not exist." };
             }
         }
 

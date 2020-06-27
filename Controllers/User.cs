@@ -12,6 +12,8 @@ namespace Angular7CRUDAPI.Controllers
         public string Password { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string Status { get; set; }
+        public string Message { get; set; }
     }
     
 }
